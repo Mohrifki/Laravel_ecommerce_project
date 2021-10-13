@@ -21,6 +21,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', 'WebsiteController@index')->name('website_index');
+Route::get('/products', 'WebsiteController@products')->name('website_products');
+Route::get('/details', 'WebsiteController@details')->name('website_details');
 
 // Route::post('/login','Auth\LoginController@login')->middleware('check_user_is_active');
 

@@ -10,4 +10,14 @@ class WebsiteController extends Controller
     {
         return view('website.ecommerce.index');
     }
+
+    public function products()
+    {
+        return view('website.ecommerce.products');
+    }
+
+    public function details()
+    {
+        return view('website.ecommerce.product_details');
+    }
 }
