@@ -1,18 +1,6 @@
 <nav>
     <ul>
         <li class="active2"><a href="/">Home</a></li>
-        <li><a href="#">product</a></li>
-        <li><a href="#">product details</a></li>
-        <li><a href="#">cart</a></li>
-        <li><a href="#">wishlist</a></li>
-        <li><a href="#">checkout</a></li>
-        <li><a class="menu-contact" href="#">contact us</a></li>
-    </ul>
-</nav>
-
-{{-- <nav>
-    <ul>
-        <li class="active2"><a href="/">Home</a></li>
         <li><a href="{{ route('website_products') }}">product</a></li>
         <li><a href="{{ route('website_product_details',rand(1,20)) }}">product details</a></li>
         <li><a href="{{ route('website_cart') }}">cart</a></li>
@@ -20,4 +8,4 @@
         <li><a href="{{ route('website_checkout') }}">checkout</a></li>
         <li><a class="menu-contact" href="{{ route('website_contact') }}">contact us</a></li>
     </ul>
-</nav> --}}
+</nav>
