@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -55,6 +56,10 @@ class LoginController extends Controller
         $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
+        if(!User::where('email', $request->email)->exist()){
+            Auth::logout();
+            return redirect()->back()->with('error', 'your account is blocked');
+        }
         if(Auth::user()->status == 0){
             Auth::logout();
             return redirect()->back()->with('error', 'your account is blocked');
