@@ -23,6 +23,9 @@ class CreateSettingsTable extends Migration
             $table->text('city')->nullable();
             $table->text('zip_code')->nullable();
             $table->text('map')->nullable();
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

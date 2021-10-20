@@ -17,6 +17,9 @@ class CreateStatusesTable extends Migration
             $table->id();
             $table->string('name',100)->nullable();
             $table->integer('serial')->nullable();
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

@@ -19,6 +19,9 @@ class CreateCarriersTable extends Migration
             $table->double('price')->nullable();
             $table->text('delevery_text')->nullable();
             $table->string('logo',100)->nullable();
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

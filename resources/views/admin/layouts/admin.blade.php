@@ -31,6 +31,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script src="{{ asset('contents/admin') }}/js/jquery.min.js"></script>
         {{-- <script src="{{ asset('contents/admin') }}/axios.js"></script> --}}
+        <script src="{{ asset('contents/admin') }}/custom.js"></script>
         <script>
             $.ajaxSetup({
                 cache:false,
@@ -51,7 +52,6 @@
                 })
             }
         </script>
-        <script src="{{ asset('contents/admin') }}/custom.js"></script>
     </head>
 
     <body class="bg-theme bg-theme1">
@@ -357,7 +357,6 @@
 
     <script src="{{ asset('contents/admin') }}/js/popper.min.js"></script>
     <script src="{{ asset('contents/admin') }}/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ asset('contents/admin') }}/custom.js"></script> --}}
 
     <!-- simplebar js -->
     <script src="{{ asset('contents/admin') }}/plugins/simplebar/js/simplebar.js"></script>

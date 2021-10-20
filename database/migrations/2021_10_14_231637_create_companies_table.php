@@ -21,6 +21,9 @@ class CreateCompaniesTable extends Migration
             $table->text('address2')->nullable();
             $table->integer('country_id')->nullable();
             $table->integer('tin')->nullable();
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

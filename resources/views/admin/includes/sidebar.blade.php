@@ -29,25 +29,6 @@
         </li>
     @endif
 
-
-    <li>
-      <a class="has-arrow" href="#">
-          <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
-          <div class="menu-title">Blank Pages</div>
-      </a>
-      <ul class="">
-        <li>
-          <a href="{{route('admin_blade_index')}}"><i class="zmdi zmdi-dot-circle-alt"></i>index</a>
-        </li>
-        <li>
-            <a href="{{route('admin_blade_create')}}"><i class="zmdi zmdi-dot-circle-alt"></i>create</a>
-        </li>
-        <li>
-            <a href="{{route('admin_blade_view')}}"><i class="zmdi zmdi-dot-circle-alt"></i>view</a>
-        </li>
-      </ul>
-    </li>
-
     <li>
         <a class="has-arrow" href="javascript:void()">
             <div class="parent-icon"><i class="fa fa-shopping-cart"></i></div>
@@ -55,10 +36,44 @@
         </a>
         <ul class="">
           <li>
-            <a href="{{route('admin_blade_index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Add Product</a>
+            <a href="{{route('admin_product_create')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Add Product</a>
+          </li>
+
+          <li>
+            <a href="{{route('brand.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Brands</a>
+          </li>
+
+          <li>
+            <a href="{{route('main_category.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Main Category</a>
+          </li>
+
+          <li>
+            <a href="{{route('size.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Size</a>
+          </li>
+
+          <li>
+            <a href="{{route('status.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Status</a>
           </li>
         </ul>
     </li>
+
+    <li>
+        <a class="has-arrow" href="#">
+            <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
+            <div class="menu-title">Blank Pages</div>
+        </a>
+        <ul class="">
+          <li>
+            <a href="{{route('admin_blade_index')}}"><i class="zmdi zmdi-dot-circle-alt"></i>index</a>
+          </li>
+          <li>
+              <a href="{{route('admin_blade_create')}}"><i class="zmdi zmdi-dot-circle-alt"></i>create</a>
+          </li>
+          <li>
+              <a href="{{route('admin_blade_view')}}"><i class="zmdi zmdi-dot-circle-alt"></i>view</a>
+          </li>
+        </ul>
+      </li>
 
     <li class="menu-label">Extra</li>
     <li>

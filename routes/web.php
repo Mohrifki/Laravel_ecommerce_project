@@ -40,7 +40,6 @@ Route::group([
 
 });
 
-
 // user management
 Route::group([
     'prefix' => 'user',
@@ -74,9 +73,40 @@ Route::group([
 });
 
 Route::group([
+    'prefix' => 'admin/product',
+    'middleware' => ['auth'],
+    'namespace' => 'Product'
+], function () {
+
+    // basic_page
+    Route::get('/index', 'ProductController@index')->name('admin_product_index');
+    Route::get('/create', 'ProductController@create')->name('admin_product_create');
+    Route::get('/show', 'ProductController@show')->name('admin_product_view');
+
+    // Route::get('/brand', 'BrandController@index')->name('brand.index');
+    // Route::get('/brand/get/{id}', 'BrandController@get')->name('brand.get');
+    // Route::get('/brand/create', 'BrandController@create')->name('brand.create');
+    // Route::get('/brand/show/{id}', 'BrandController@show')->name('brand.show');
+    // Route::get('/brand/edit/{id}', 'BrandController@edit')->name('brand.edit');
+    // Route::post('/brand', 'BrandController@store')->name('brand.store');
+    // Route::put('/brand/{id}', 'BrandController@update')->name('brand.update');
+    // Route::delete('/brand/{id}', 'BrandController@destroy')->name('brand.destroy');
+
+    Route::resource('brand', 'BrandController');
+    Route::resource('main_category', 'MainCategoryController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('sub_category', 'SubCategoryController');
+    Route::resource('color', 'ColorController');
+    Route::resource('size', 'SizeController');
+    Route::resource('unit', 'UnitController');
+    Route::resource('status', 'StatusController');
+
+});
+
+Route::group([
     'prefix' => 'blank',
     'middleware' => ['auth'],
-    'namespace' => 'admin'
+    'namespace' => 'Admin'
 ], function () {
 
     // basic_page

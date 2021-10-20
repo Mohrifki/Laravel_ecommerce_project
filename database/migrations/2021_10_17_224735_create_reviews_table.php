@@ -19,6 +19,9 @@ class CreateReviewsTable extends Migration
             $table->integer('rattings')->nullable();
             $table->text('description')->nullable();
             $table->integer('parent_id')->nullable();
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
