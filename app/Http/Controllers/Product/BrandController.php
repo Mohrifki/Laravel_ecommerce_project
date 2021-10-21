@@ -45,6 +45,11 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->all();
+        $this->validate($request, [
+            'name' => ['required'],
+            'icon' => ['required']
+        ]);
         $brand = Brand::create($request->except('icon'));
 
         if($request->hasFile('icon')){
@@ -56,7 +61,8 @@ class BrandController extends Controller
         $brand->creator = Auth::user()->id;
         $brand->save();
 
-        return redirect()->back()->with('success','data created successfully');
+        return 'success';
+        // return redirect()->back()->with('success','data created successfully');
         
         // dd($request, $brand);
     }
@@ -92,6 +98,10 @@ class BrandController extends Controller
      */
     public function update(Request $request,Brand $brand)
     {
+        $this->validate($request,[
+            'name' => ['required']
+        ]);
+
         $brand->update($request->except('icon'));
         if($request->hasFile('icon')){
             $brand->logo = Storage::put('uploads/maincategory',$request->file('icon'));
@@ -101,7 +111,9 @@ class BrandController extends Controller
         $brand->slug = Str::slug($brand->name);
         $brand->creator = Auth::user()->id;
         $brand->save();
-        return redirect()->back()->with('success','data updated successfully');
+
+        return 'success';
+        // return redirect()->back()->with('success','data updated successfully');
     }
 
     /**

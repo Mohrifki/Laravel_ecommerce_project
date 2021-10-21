@@ -11,12 +11,14 @@
                         <div class="card-body">
                             <div class="card-title">Create Size</div>
                             <hr />
-                            <form method="POST" action="{{ route('size.store') }}" enctype="multipart/form-data">
+                            <form method="POST" class="insert_form" action="{{ route('size.store') }}" enctype="multipart/form-data">
                                 @csrf
+                                <div class="preloader"></div>
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="name" class="form-control" id="input-21" />
+                                        <span class="text-danger name"></span>
                                     </div>
                                 </div>
                                 

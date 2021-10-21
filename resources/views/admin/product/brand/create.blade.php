@@ -9,21 +9,27 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Create Brand</div>
+                            <div class="card-header d-flex justify-content-between">
+                                <div class="card-title">Create Brand</div>
+                                <a href="{{ route('brand.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"> Back</i></a>
+                            </div>
                             <hr />
-                            <form method="POST" action="{{ route('brand.store') }}" enctype="multipart/form-data">
+                            <form method="POST" class="insert_form" action="{{ route('brand.store') }}" enctype="multipart/form-data">
+                                <div class="preloader"></div>
                                 @csrf
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="name" class="form-control" id="input-21" />
+                                        <input type="text" name="name" placeholder="Name" class="form-control" id="input-21" />
+                                        <span class="text-danger name"></span>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Icon</label>
                                     <div class="col-sm-10">
-                                        <input type="file" name="icon" class="form-control" id="input-21" placeholder="Enter Your Name" />
+                                        <input type="file" name="icon" class="form-control" id="input-21" />
+                                        <span class="text-danger icon"></span>
                                     </div>
                                 </div>
                                 

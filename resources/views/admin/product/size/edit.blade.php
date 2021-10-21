@@ -11,13 +11,15 @@
                         <div class="card-body">
                             <div class="card-title">Edit size</div>
                             <hr />
-                            <form method="POST" action="{{ route('size.update', $size->id) }}" enctype="multipart/form-data">
+                            <form method="POST" class="update_form" action="{{ route('size.update', $size->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
+                                <div class="preloader"></div>
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="name" value="{{ $size->name }}" class="form-control" id="input-21" />
+                                        <span class="text-danger name"></span>
                                     </div>
                                 </div>
                                                                 

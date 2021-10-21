@@ -40,13 +40,18 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name'=> ['required'],
+        ]);
+
         $size = Size::create($request->all());
 
         $size->slug = Str::slug($size->name);
         $size->creator = Auth::user()->id;
         $size->save();
 
-        return redirect()->back()->with('success','data created successfully');
+        return 'success';
+        // return redirect()->back()->with('success','data created successfully');
     }
 
     /**
@@ -80,13 +85,18 @@ class SizeController extends Controller
      */
     public function update(Request $request, Size $size)
     {
+        $this->validate($request,[
+            'name'=> ['required'],
+        ]);
+        
         $size->update($request->all());
 
         $size->slug = Str::slug($size->name);
         $size->creator = Auth::user()->id;
         $size->save();
 
-        return redirect()->back()->with('success','data updated successfully');
+        return 'success';
+        // return redirect()->back()->with('success','data updated successfully');
     }
 
     /**

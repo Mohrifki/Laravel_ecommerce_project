@@ -40,13 +40,18 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        $status = Status::create($request->all());
+        $this->validate($request,[
+            'name'=> ['required'],
+        ]);
 
-        $status->slug = Str::slug($status->name);
-        $status->creator = Auth::user()->id;
-        $status->save();
+        $size = Status::create($request->all());
 
-        return redirect()->back()->with('success','data created successfully');
+        $size->slug = Str::slug($size->name);
+        $size->creator = Auth::user()->id;
+        $size->save();
+
+        return 'success';
+        // return redirect()->back()->with('success','data created successfully');
     }
 
     /**
@@ -80,13 +85,17 @@ class StatusController extends Controller
      */
     public function update(Request $request, Status $status)
     {
+        $this->validate($request, [
+            'name'=>['required']
+        ]);
         $status->update($request->all());
 
         $status->slug = Str::slug($status->name);
         $status->creator = Auth::user()->id;
         $status->save();
 
-        return redirect()->back()->with('success','data Updated successfully');
+        return 'success';
+        // return redirect()->back()->with('success','data Updated successfully');
     }
 
     /**

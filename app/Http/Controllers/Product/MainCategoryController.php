@@ -40,9 +40,13 @@ class MainCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name' => ['required'],
+            'icon' => ['required'],
+        ]);
         $main_category = MainCategory::create($request->except('icon'));
         if($request->hasFile('icon')){
-            $main_category->logo = Storage::put('uploads/maincategory',$request->file('icon'));
+            $main_category->icon = Storage::put('uploads/maincategory',$request->file('icon'));
             $main_category->save();
         }
 
@@ -50,7 +54,9 @@ class MainCategoryController extends Controller
         $main_category->creator = Auth::user()->id;
         $main_category->save();
 
-        return redirect()->back()->with('success','data created successfully');
+        return 'success';
+
+        // return redirect()->back()->with('success','data created successfully');
     }
 
     /**
@@ -84,6 +90,10 @@ class MainCategoryController extends Controller
      */
     public function update(Request $request, MainCategory $main_category)
     {
+        $this->validate($request,[
+            'name' => ['required']
+        ]);
+
         $main_category->update($request->except('icon'));
         if($request->hasFile('icon')){
             $main_category->logo = Storage::put('uploads/maincategory',$request->file('icon'));
@@ -94,7 +104,8 @@ class MainCategoryController extends Controller
         $main_category->creator = Auth::user()->id;
         $main_category->save();
 
-        return redirect()->back()->with('success','data updated successfully');
+        return 'success';
+        // return redirect()->back()->with('success','data updated successfully');
     }
 
     /**
