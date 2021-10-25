@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Color;
+use App\Models\MainCategory;
+use App\Models\Size;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +22,11 @@ class BrandController extends Controller
      */
     public function index()
     {
+        
+
+        $main_categories = MainCategory::where('status',1)->get();
+        $categories = 
+
         $collection = Brand::where('status', 1)->latest()->paginate(10);
         return view('admin.product.brand.index', compact('collection'));
     }
@@ -61,7 +70,10 @@ class BrandController extends Controller
         $brand->creator = Auth::user()->id;
         $brand->save();
 
-        return 'success';
+        return response()->json([
+            'html' => "<option value='".$brand->id."'>".$brand->name."</option>",
+            'value' => $brand->id,
+        ]);
         // return redirect()->back()->with('success','data created successfully');
         
         // dd($request, $brand);

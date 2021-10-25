@@ -36,7 +36,7 @@
         </a>
         <ul class="">
           <li>
-            <a href="{{route('admin_product_create')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Add Product</a>
+            <a href="{{route('product.create')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Add Product</a>
           </li>
 
           <li>
@@ -48,12 +48,37 @@
           </li>
 
           <li>
+            <a href="{{route('category.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Catetories</a>
+          </li>
+
+          <li>
+            <a href="{{route('sub_category.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i>Sub Catetories</a>
+          </li>
+
+          <li>
+            <a href="{{route('color.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Color</a>
+          </li>
+
+          <li>
             <a href="{{route('size.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Size</a>
+          </li>
+
+          <li>
+            <a href="{{route('unit.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Unit</a>
+          </li>
+
+          <li>
+            <a href="{{route('writer.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> writer</a>
+          </li>
+
+          <li>
+            <a href="{{route('publication.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Publication</a>
           </li>
 
           <li>
             <a href="{{route('status.index')}}"><i class="zmdi zmdi-dot-circle-alt"></i> Status</a>
           </li>
+
         </ul>
     </li>
 

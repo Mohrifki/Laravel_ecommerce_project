@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\MainCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -14,7 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $collection = Category::where('status',1)->latest()->paginate(10);
+        return view('admin.product.category.index', compact('collection'));
     }
 
     /**
@@ -24,7 +30,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $maincategory =MainCategory::where('status',1)->latest()->get();
+        return view('admin.product.category.create', compact('maincategory'));
     }
 
     /**
@@ -35,7 +42,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=> ['required'],
+            'main_category_id'=> ['required'],
+            'icon'=> ['required'],
+        ]);
+
+        $category = Category::create($request->except('icon'));
+        
+        if($request->hasFile('icon')){
+            $category->icon = Storage::put('uploads/category',$request->file('icon'));
+            $category->save();
+        }
+
+        $category->slug = Str::slug($category->name);
+        $category->creator = Auth::user()->id;
+        $category->save();
+
+        return 'success';
     }
 
     /**
@@ -55,9 +79,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        $main_category =MainCategory::where('status',1)->latest()->get();
+        return view('admin.product.category.edit', compact('category','main_category'));
     }
 
     /**
@@ -67,9 +92,25 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $this->validate($request,[
+            'name'=> ['required'],
+            'main_category_id'=> ['required'],
+        ]);
+
+        $category->update($request->except('icon'));
+        
+        if($request->hasFile('icon')){
+            $category->icon = Storage::put('uploads/category',$request->file('icon'));
+            $category->save();
+        }
+
+        $category->slug = Str::slug($category->name);
+        $category->creator = Auth::user()->id;
+        $category->save();
+
+        return 'success';
     }
 
     /**
@@ -78,8 +119,21 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return 'success';
+    }
+
+    public function get_category_by_main_category($main_category_id)
+    {
+        $categories = Category::where('main_category_id', $main_category_id)->get();
+        $option = "";
+        foreach ($categories as $key => $value) {
+            $id = $value->id;
+            $name = $value->name;
+            $option.= "<option value = '$id' >$name</option>";
+        }
+        return $option;
     }
 }

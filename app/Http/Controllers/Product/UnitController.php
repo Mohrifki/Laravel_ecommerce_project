@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Unit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UnitController extends Controller
 {
@@ -14,7 +17,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        $collection = Unit::where('status', 1)->latest()->paginate(10);
+        return view('admin.product.unit.index', compact('collection'));
     }
 
     /**
@@ -24,7 +28,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.unit.create');
     }
 
     /**
@@ -35,7 +39,17 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=> ['required'],
+        ]);
+
+        $unit = Unit::create($request->all());
+
+        $unit->slug = Str::slug($unit->name);
+        $unit->creator = Auth::user()->id;
+        $unit->save();
+
+        return 'success';
     }
 
     /**
@@ -55,9 +69,9 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Unit $unit)
     {
-        //
+        return view('admin.product.unit.edit', compact('unit'));
     }
 
     /**
@@ -67,9 +81,18 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Unit $unit)
     {
-        //
+        $this->validate($request, [
+            'name'=>['required']
+        ]);
+        $unit->update($request->all());
+
+        $unit->slug = Str::slug($unit->name);
+        $unit->creator = Auth::user()->id;
+        $unit->save();
+
+        return 'success';
     }
 
     /**
@@ -78,8 +101,9 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Unit $unit)
     {
-        //
+        $unit->delete();
+        return 'success';
     }
 }

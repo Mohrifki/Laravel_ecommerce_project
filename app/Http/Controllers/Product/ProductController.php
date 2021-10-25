@@ -3,6 +3,15 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\MainCategory;
+use App\Models\Publication;
+use App\Models\Size;
+use App\Models\SubCategory;
+use App\Models\Unit;
+use App\Models\Writer;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -24,7 +33,27 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $brands = Brand::where('status',1)->get();
+        $colors = Color::where('status',1)->get();
+        $sizes = Size::where('status',1)->get();
+        $units = Unit::where('status',1)->get();
+        $writers = Writer::where('status',1)->get();
+        $publications = Publication::where('status',1)->get();
+
+        $maincategories = MainCategory::where('status',1)->get();
+        $latest_maincategory_id = MainCategory::where('status',1)->first()->id;
+
+        $categories = Category::where('status', 1)->where('main_category_id', $latest_maincategory_id)->latest()->get();
+        $latest_category_id = Category::where('status', 1)->where('main_category_id', $latest_maincategory_id)->first()->id;
+        
+        $sub_categories = SubCategory::where('status',1)
+                            ->where('main_category_id',MainCategory::where('status',1)->latest()->first()->id)
+                            ->where('category_id',Category::where('status',1)->where('main_category_id',MainCategory::where('status',1)->latest()->first()->id)->latest()->first()->id)
+                            ->latest()->get();
+
+        return view('admin.product.create',compact('brands', 'colors', 'sizes', 
+                                                'units', 'maincategories', 'categories',
+                                                'sub_categories', 'writers', 'publications'));
     }
 
     /**
@@ -35,7 +64,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'brand' => ['required'],
+            'main_category_id' => ['required'],
+            'category_id' => ['required'],
+            'sub_category_id' => ['required'],
+            'color_id' => ['required'],
+            'size_id' => ['required'],
+            'unit_id' => ['required'],
+            'price' => ['required'],
+            'discount' => ['required'],
+            'expiration_date' => ['required'],
+            'stock' => ['required'],
+            'alert_quantity' => ['required'],
+            'description' => ['required'],
+            'features' => ['required'],
+            'thumb_image' => ['required'],
+            'related_images' => ['required'],
+            'status' => ['required'],
+        ]);
     }
 
     /**

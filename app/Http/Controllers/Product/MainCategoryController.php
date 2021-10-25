@@ -45,6 +45,7 @@ class MainCategoryController extends Controller
             'icon' => ['required'],
         ]);
         $main_category = MainCategory::create($request->except('icon'));
+        
         if($request->hasFile('icon')){
             $main_category->icon = Storage::put('uploads/maincategory',$request->file('icon'));
             $main_category->save();

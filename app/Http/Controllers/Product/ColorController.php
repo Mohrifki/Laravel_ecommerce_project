@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Color;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ColorController extends Controller
 {
@@ -14,7 +17,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        $collection = Color::where('status', 1)->latest()->paginate(10);
+        return view('admin.product.color.index', compact('collection'));
     }
 
     /**
@@ -24,7 +28,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.color.create');
     }
 
     /**
@@ -35,7 +39,20 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=> ['required'],
+        ]);
+
+        $color = Color::create($request->all());
+
+        $color->slug = Str::slug($color->name);
+        $color->creator = Auth::user()->id;
+        $color->save();
+
+        return response()->json([
+            'html' => "<option value='".$color->id."'>".$color->name."</option>",
+            'value' => $color->id,
+        ]);
     }
 
     /**
@@ -55,9 +72,9 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Color $color)
     {
-        //
+        return view('admin.product.color.edit', compact('color'));
     }
 
     /**
@@ -67,9 +84,18 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Color $color)
     {
-        //
+        $this->validate($request, [
+            'name'=>['required']
+        ]);
+        $color->update($request->all());
+
+        $color->slug = Str::slug($color->name);
+        $color->creator = Auth::user()->id;
+        $color->save();
+
+        return 'success';
     }
 
     /**
@@ -78,8 +104,9 @@ class ColorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Color $color)
     {
-        //
+        $color->delete();
+        return 'success';
     }
 }
