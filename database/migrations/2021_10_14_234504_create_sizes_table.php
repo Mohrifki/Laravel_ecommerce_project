@@ -27,7 +27,7 @@ class CreateSizesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('size_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -39,5 +39,6 @@ class CreateSizesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('sizes');
+        Schema::dropIfExists('product_size');
     }
 }

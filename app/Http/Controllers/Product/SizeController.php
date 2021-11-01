@@ -50,7 +50,10 @@ class SizeController extends Controller
         $size->creator = Auth::user()->id;
         $size->save();
 
-        return 'success';
+        return response()->json([
+            'html' => "<option value='".$size->id."'>".$size->name."</option>",
+            'value' => $size->id,
+        ]);
         // return redirect()->back()->with('success','data created successfully');
     }
 

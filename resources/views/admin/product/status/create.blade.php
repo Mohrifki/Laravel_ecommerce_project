@@ -9,9 +9,9 @@
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Create Status</div>
+                            <div class="card-title">Create Size</div>
                             <hr />
-                            <form method="POST" class="insert_form" action="{{ route('status.store') }}" enctype="multipart/form-data">
+                            <form method="POST" class="insert_form" action="{{ route('size.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="preloader"></div>
                                 <div class="form-group row">
@@ -19,9 +19,6 @@
                                     <div class="col-sm-10">
                                         <input type="text" name="name" class="form-control" id="input-21" />
                                         <span class="text-danger name"></span>
-                                        @error('name')
-                                            <span class="text-danger">{{$message}}</span>
-                                        @enderror
                                     </div>
                                 </div>
                                 

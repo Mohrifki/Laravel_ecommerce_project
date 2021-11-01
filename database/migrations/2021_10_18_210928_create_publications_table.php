@@ -23,6 +23,14 @@ class CreatePublicationsTable extends Migration
             $table->integer('status')->default(1);
             $table->timestamps();
         });
+
+        Schema::create('product_publication', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('publication_id');
+            $table->integer('product_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -33,5 +41,6 @@ class CreatePublicationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('publications');
+        Schema::dropIfExists('product_publication');
     }
 }

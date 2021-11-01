@@ -51,8 +51,12 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="card-footer">
-                                {{ $collection->links() }}
+                        </div>
+                        <div class="row" style="padding: 10px">
+                            <div class="col-12">
+                                <div aria-label="Page navigation example" class="navigation_body">
+                                    {{ $collection->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>

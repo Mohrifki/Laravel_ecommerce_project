@@ -28,7 +28,7 @@ class CreateMainCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('main_category_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -40,5 +40,6 @@ class CreateMainCategoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('main_categories');
+        Schema::dropIfExists('main_category_product');
     }
 }

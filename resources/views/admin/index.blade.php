@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div style="height: 600px;">
-
+                        
                     </div>
                 </div>
             </div>

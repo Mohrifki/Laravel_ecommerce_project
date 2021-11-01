@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\WebsiteController;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,9 +102,24 @@ Route::group([
     Route::resource('status', 'StatusController');
     Route::resource('writer', 'WriterController');
     Route::resource('publication', 'PublicationController');
+    Route::resource('vendor', 'VendorController');
+    Route::resource('image', 'ImageController');
 
-    Route::get('/get-all-category-selected-by-main-category/{main_category_id}', 'CategoryController@get_category_by_main_category')->name('get_all_category_selected_by_main_category');
+    Route::get('/get-all-cateogory-selected-by-main-category/{main_category_id}', 'CategoryController@get_category_by_main_category')->name('get_all_category_selected_by_main_category');
+    Route::get('/get-all-sub-cateogory-selected-by-category/{category_id}', 'CategoryController@get_sub_category_by_category')->name('get_all_sub_category_by_category');
+    Route::get('/get-all-main-category-josn', 'MainCategoryController@get_main_category_json')->name('get_main_category_json');
+    Route::get('/get-all-category-josn', 'CategoryController@get_category_json')->name('get_category_json');
+});
 
+Route::group([
+    'prefix' => 'file-manager',
+    'middleware' => ['auth'],
+    'namespace' => 'Admin'
+], function () {
+
+    Route::post('/store-file', 'FileManagerController@store_file')->name('admin_fm_store_file');
+    Route::get('/get-files', 'FileManagerController@get_files')->name('admin_fm_get_files');
+    Route::delete('/delete-file/{image}', 'FileManagerController@delete_file')->name('admin_fm_delete_file');
 });
 
 Route::group([
@@ -117,3 +134,8 @@ Route::group([
     Route::get('/view', 'AdminController@blade_view')->name('admin_blade_view');
 
 });
+
+Route::post('/test', function (Request $request) {
+    
+    dd($request->all());
+})->name('route name');

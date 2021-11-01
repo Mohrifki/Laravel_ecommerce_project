@@ -13,7 +13,7 @@ use App\Models\Size;
 use App\Models\Status;
 use App\Models\SubCategory;
 use App\Models\Unit;
-// use App\Models\Vendor;
+use App\Models\Vendor;
 use App\Models\Writer;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         Color::truncate();
         Size::truncate();
         Unit::truncate();
-        // Vendor::truncate();
+        Vendor::truncate();
         Product::truncate();
         Image::truncate();
         Status::truncate();
@@ -577,54 +577,54 @@ class DatabaseSeeder extends Seeder
             ],
 
         ];
-        // Status::insert($data);
+        Status::insert($data);
 
-        // // Vendor
-        // $data = [
-        //     [
-        //         'name' => strtolower('Mr.Tutul'),
-        //         'email' => 'tutul@gmail.com',
-        //         'address' => 'jatrabari',
-        //         'creator' => 1,
-        //         'slug' => str::slug(strtolower('tutul')),
-        //         'created_at' => Carbon::now()->toDateTimeString()
-        //     ],
-        //     [
-        //         'name' => strtolower('Mr.yousuf'),
-        //         'email' => 'yousuf@gmail.com',
-        //         'address' => 'danmondi',
-        //         'creator' => 1,
-        //         'slug' => str::slug(strtolower('yousuf')),
-        //         'created_at' => Carbon::now()->toDateTimeString()
-        //     ],
-        //     [
-        //         'name' => strtolower('Mr.sajid'),
-        //         'email' => 'sajid@gmail.com',
-        //         'address' => 'cittagon',
-        //         'creator' => 1,
-        //         'slug' => str::slug(strtolower('sajid')),
-        //         'created_at' => Carbon::now()->toDateTimeString()
-        //     ],
-        // ];
-        // // Vendor::insert($data);
+        // Vendor
+        $data = [
+            [
+                'name' => strtolower('Mr.Tutul'),
+                'email' => 'tutul@gmail.com',
+                'address' => 'jatrabari',
+                'creator' => 1,
+                'slug' => str::slug(strtolower('tutul')),
+                'created_at' => Carbon::now()->toDateTimeString()
+            ],
+            [
+                'name' => strtolower('Mr.yousuf'),
+                'email' => 'yousuf@gmail.com',
+                'address' => 'danmondi',
+                'creator' => 1,
+                'slug' => str::slug(strtolower('yousuf')),
+                'created_at' => Carbon::now()->toDateTimeString()
+            ],
+            [
+                'name' => strtolower('Mr.sajid'),
+                'email' => 'sajid@gmail.com',
+                'address' => 'cittagon',
+                'creator' => 1,
+                'slug' => str::slug(strtolower('sajid')),
+                'created_at' => Carbon::now()->toDateTimeString()
+            ],
+        ];
+        Vendor::insert($data);
 
-        // // images
-        // for ($i = 1; $i <= 18; $i++) {
-        //     Image::insert([
-        //         'name' => 'dummy_products/' . $i . ".jpg",
-        //         'creator' => 1,
-        //         'created_at' => Carbon::now()->toDateTimeString()
-        //     ]);
-        // }
+        // images
+        for ($i = 1; $i <= 18; $i++) {
+            Image::insert([
+                'name' => 'dummy_products/' . $i . ".jpg",
+                'creator' => 1,
+                'created_at' => Carbon::now()->toDateTimeString()
+            ]);
+        }
 
         // Products
         DB::table('main_category_product')->truncate();
         DB::table('category_product')->truncate();
-        DB::table('sub_category_product')->truncate();
+        DB::table('product_sub_category')->truncate();
         DB::table('color_product')->truncate();
         DB::table('product_size')->truncate();
         DB::table('product_unit')->truncate();
-        // DB::table('product_vendor')->truncate();
+        DB::table('product_vendor')->truncate();
         DB::table('product_writer')->truncate();
         DB::table('product_publication')->truncate();
         DB::table('image_product')->truncate();
@@ -686,7 +686,7 @@ class DatabaseSeeder extends Seeder
                 ['category_id' => 3, 'product_id' => $product->id]
             ]);
 
-            DB::table('sub_category_product')->insert([
+            DB::table('product_sub_category')->insert([
                 ['sub_category_id' => 1, 'product_id' => $product->id],
                 ['sub_category_id' => 2, 'product_id' => $product->id],
                 ['sub_category_id' => 3, 'product_id' => $product->id]
@@ -710,10 +710,10 @@ class DatabaseSeeder extends Seeder
                 ['unit_id' => 3, 'product_id' => $product->id]
             ]);
 
-            // DB::table('product_vendor')->insert([
-            //     ['vendor_id' => 1, 'product_id' => $product->id],
-            //     ['vendor_id' => 2, 'product_id' => $product->id],
-            // ]);
+            DB::table('product_vendor')->insert([
+                ['vendor_id' => 1, 'product_id' => $product->id],
+                ['vendor_id' => 2, 'product_id' => $product->id],
+            ]);
 
             DB::table('product_writer')->insert([
                 ['writer_id' => 1, 'product_id' => $product->id],

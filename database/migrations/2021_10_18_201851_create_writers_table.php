@@ -23,6 +23,14 @@ class CreateWritersTable extends Migration
             $table->integer('status')->default(1);
             $table->timestamps();
         });
+
+        Schema::create('product_writer', function(Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('writer_id');
+            $table->integer('product_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -33,5 +41,6 @@ class CreateWritersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('writers');
+        Schema::dropIfExists('product_writer');
     }
 }

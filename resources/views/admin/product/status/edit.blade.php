@@ -4,21 +4,21 @@
 
     <div class="content-wrapper">
         <div class="container-fluid">
-            @include('admin.includes.bread_cumb',['title'=>'Status'])
+            @include('admin.includes.bread_cumb',['title'=>'Edit'])
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Edit Status</div>
+                            <div class="card-title">Edit size</div>
                             <hr />
-                            <form method="POST" class="update_form" action="{{ route('status.update', $status->id) }}" enctype="multipart/form-data">
+                            <form method="POST" class="update_form" action="{{ route('size.update', $size->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 <div class="preloader"></div>
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="name" value="{{ $status->name }}" class="form-control" id="input-21" />
+                                        <input type="text" name="name" value="{{ $size->name }}" class="form-control" id="input-21" />
                                         <span class="text-danger name"></span>
                                     </div>
                                 </div>

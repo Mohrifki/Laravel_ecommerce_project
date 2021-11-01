@@ -347,7 +347,7 @@
 
     {{-- file mananger --}}
     @once
-        {{-- @include('admin.product.components.file_manager') --}}
+        @include('admin.product.components.file_manager')
     @endonce
 
 

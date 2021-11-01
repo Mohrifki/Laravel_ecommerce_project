@@ -27,7 +27,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('image_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -39,5 +39,6 @@ class CreateImagesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('images');
+        Schema::dropIfExists('image_product');
     }
 }

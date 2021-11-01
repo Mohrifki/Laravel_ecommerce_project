@@ -49,7 +49,10 @@ class UnitController extends Controller
         $unit->creator = Auth::user()->id;
         $unit->save();
 
-        return 'success';
+        return response()->json([
+            'html' => "<option value='".$unit->id."'>".$unit->name."</option>",
+            'value' => $unit->id,
+        ]);
     }
 
     /**

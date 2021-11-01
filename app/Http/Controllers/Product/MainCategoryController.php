@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\MainCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class MainCategoryController extends Controller
 {
@@ -18,8 +19,18 @@ class MainCategoryController extends Controller
      */
     public function index()
     {
-        $collection = MainCategory::where('status', 1)->latest()->paginate(10);
-        return view('admin.product.main_category.index', compact('collection'));
+        $collection = MainCategory::where('status',1)->latest()->paginate(10);
+        return view('admin.product.main_category.index',compact('collection'));
+    }
+
+    public function get_main_category_json()
+    {
+        $collection = MainCategory::where('status',1)->latest()->get();
+        $options = '';
+        foreach ($collection as $key => $value) {
+            $options .= "<option ".($key==0?' selected':'')." value='".$value->id."'>".$value->name."</option>";
+        }
+        return $options;
     }
 
     /**
@@ -45,7 +56,7 @@ class MainCategoryController extends Controller
             'icon' => ['required'],
         ]);
         $main_category = MainCategory::create($request->except('icon'));
-        
+
         if($request->hasFile('icon')){
             $main_category->icon = Storage::put('uploads/maincategory',$request->file('icon'));
             $main_category->save();
@@ -55,8 +66,10 @@ class MainCategoryController extends Controller
         $main_category->creator = Auth::user()->id;
         $main_category->save();
 
-        return 'success';
-
+        return response()->json([
+            'html' => "<option value='".$main_category->id."'>".$main_category->name."</option>",
+            'value' => $main_category->id,
+        ]);
         // return redirect()->back()->with('success','data created successfully');
     }
 
@@ -79,7 +92,7 @@ class MainCategoryController extends Controller
      */
     public function edit(MainCategory $main_category)
     {
-        return view('admin.product.main_category.edit', compact('main_category'));
+        return view('admin.product.main_category.edit',compact('main_category'));
     }
 
     /**
@@ -96,6 +109,7 @@ class MainCategoryController extends Controller
         ]);
 
         $main_category->update($request->except('icon'));
+
         if($request->hasFile('icon')){
             $main_category->logo = Storage::put('uploads/maincategory',$request->file('icon'));
             $main_category->save();

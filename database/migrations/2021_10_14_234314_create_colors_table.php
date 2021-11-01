@@ -27,7 +27,7 @@ class CreateColorsTable extends Migration
             $table->increments('id');
             $table->integer('product_id');
             $table->integer('color_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -39,5 +39,6 @@ class CreateColorsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('colors');
+        Schema::dropIfExists('color_product');
     }
 }

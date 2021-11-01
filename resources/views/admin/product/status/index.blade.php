@@ -4,13 +4,13 @@
 
     <div class="content-wrapper">
         <div class="container-fluid">
-            @include('admin.includes.bread_cumb',['title'=>'All Status'])
+            @include('admin.includes.bread_cumb',['title'=>'All Size'])
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <h5 class="card-title">Status</h5>
-                            <a href="{{ route('status.create') }}" class="btn btn-warning"><i class="fa fa-plus"> ADD</i></a>
+                            <h5 class="card-title">Size</h5>
+                            <a href="{{ route('size.create') }}" class="btn btn-warning"><i class="fa fa-plus"> ADD</i></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -34,10 +34,10 @@
                                                         <a type="button" href="" class="btn btn-light waves-effect waves-light m-1">
                                                             <i class="fa fa-eye"></i> <span>view</span>
                                                         </a>
-                                                        <a type="button" href="{{ route('status.edit',$item->id) }}" class="btn btn-warning waves-effect waves-light m-1">
+                                                        <a type="button" href="{{ route('size.edit',$item->id) }}" class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a>
-                                                        <a type="button" href="{{ route('status.destroy',$item->id) }}"
+                                                        <a type="button" href="{{ route('size.destroy',$item->id) }}"
                                                             class="delete_btn btn btn-danger waves-effect waves-light m-1">
                                                             <i class="fa fa-trash-o"></i> <span>delete</span>
                                                         </a>

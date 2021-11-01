@@ -17,9 +17,8 @@ class StatusController extends Controller
      */
     public function index()
     {
-        $collection = Status::where('status', 1)->latest()->paginate(10);
-        return view('admin.product.status.index', compact('collection'));
-
+        $collection = Status::where('status',1)->latest()->paginate(10);
+        return view('admin.product.status.index',compact('collection'));
     }
 
     /**
@@ -41,14 +40,15 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=> ['required'],
+            'name' => ['required'],
         ]);
 
-        $size = Status::create($request->all());
+        $status = Status::create($request->all());
 
-        $size->slug = Str::slug($size->name);
-        $size->creator = Auth::user()->id;
-        $size->save();
+        $status->slug = Str::slug($status->name);
+        $status->creator = Auth::user()->id;
+        $status->save();
+
 
         return 'success';
         // return redirect()->back()->with('success','data created successfully');
@@ -73,7 +73,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-        return view('admin.product.status.edit', compact('status'));
+        return view('admin.product.status.edit',compact('status'));
     }
 
     /**
@@ -85,9 +85,10 @@ class StatusController extends Controller
      */
     public function update(Request $request, Status $status)
     {
-        $this->validate($request, [
-            'name'=>['required']
+        $this->validate($request,[
+            'name' => ['required']
         ]);
+
         $status->update($request->all());
 
         $status->slug = Str::slug($status->name);
@@ -95,7 +96,7 @@ class StatusController extends Controller
         $status->save();
 
         return 'success';
-        // return redirect()->back()->with('success','data Updated successfully');
+        // return redirect()->back()->with('success','data updated successfully');
     }
 
     /**
