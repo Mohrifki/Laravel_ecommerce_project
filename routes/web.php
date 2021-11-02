@@ -29,6 +29,17 @@ Route::get('/cart', 'WebsiteController@cart')->name('website_cart');
 Route::get('/checkout', 'WebsiteController@checkout')->name('website_checkout');
 Route::get('/wishlist', 'WebsiteController@wishlist')->name('website_wishlist');
 Route::get('/contact', 'WebsiteController@contact')->name('website_contact');
+Route::get('/learn-vue', 'WebsiteController@vue')->name('website_vue');
+
+
+Route::group([
+    'prefix' => 'json',
+], function () {
+    Route::get('/latest-products-json/{limit}', 'WebsiteController@latest_product_json')->name('product_latest_product_json');
+    Route::get('/show-product-json/{product}', 'WebsiteController@show_product_json')->name('product_show_product_json');
+    Route::get('/get-product-related-info-json/{product}', 'WebsiteController@get_product_related_info_json')->name('product_get_product_related_info_json');
+
+});
 
 // Route::post('/login','Auth\LoginController@login')->middleware('check_user_is_active');
 

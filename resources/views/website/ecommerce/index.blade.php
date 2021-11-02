@@ -71,7 +71,7 @@
                             <!-- banner-area end -->
 
                             <!-- tab-area start -->
-                            <div class="product box-shadow bg-fff">
+                            {{-- <div class="product box-shadow bg-fff">
                                 <div class="product-title home3-bg text-uppercase">
                                     <i class="fa fa-paper-plane-o icon home3-bg2"></i>
                                     <h3>new Product</h3>
@@ -85,9 +85,8 @@
                                         @endfor
                                     </div>
                                 </div>
-                                
-                            </div>
-                            {{-- <div class="tab-area box-shadow bg-fff">
+                            </div> --}}
+                            <div class="tab-area box-shadow bg-fff">
                                 <div class="product-title home3-bg text-uppercase">
                                     <i class="fa fa-check-square-o icon home3-bg2"></i>
                                     <h3>Products category</h3>
@@ -108,7 +107,7 @@
                                         @endfor
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- tab-area end -->
 
                             <!-- banner-area start -->
