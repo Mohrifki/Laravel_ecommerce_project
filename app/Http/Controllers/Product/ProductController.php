@@ -258,8 +258,67 @@ class ProductController extends Controller
             'related_images' => ['required'],
             'status' => ['required'],
         ]);
-        
-        return $product;
+
+        $product->name = $request->product_name;
+        $product->brand_id = $request->brand;
+        $product->tax = $request->tax;
+        $product->price = $request->price;
+        $product->sku = '';
+        $product->stock = $request->stock;
+        $product->discount = $request->discount;
+        $product->expiration_date = $request->expiration_date;
+        $product->minimum_amount = $request->alert_quantity;
+        $product->free_delivery = $request->free_delivery;
+        $product->description = $request->description;
+        $product->features = $request->features;
+        $product->thumb_image = $request->thumb_image;
+        $product->status = $request->status;
+        $product->creator = Auth::user()->id;
+        $product->save();
+
+        if ($request->has('product_main_category_id')) {
+            $product->main_category()->sync($request->product_main_category_id);
+        }
+
+        if ($request->has('product_category_id')) {
+            $product->category()->sync($request->product_category_id);
+        }
+
+        if ($request->has('product_sub_category_id')) {
+            $product->sub_category()->sync($request->product_sub_category_id);
+        }
+
+        if ($request->has('writer_id')) {
+            $product->writer()->sync($request->writer_id);
+        }
+
+        if ($request->has('publication_id')) {
+            $product->publication()->sync($request->publication_id);
+        }
+
+        if ($request->has('color_id')) {
+            $product->color()->sync($request->color_id);
+        }
+
+        if ($request->has('size_id')) {
+            $product->size()->sync($request->size_id);
+        }
+
+        if ($request->has('unit_id')) {
+            $product->unit()->sync($request->unit_id);
+        }
+
+        if ($request->has('related_images')) {
+            $product->image()->sync(json_decode($request->related_images));
+        }
+
+        if ($request->has('vendor_id')) {
+            $product->vendor()->sync($request->vendor_id);
+        }
+
+        return Product::where('id', $product->id)->with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
+                        ->latest()->first();
+
     }
 
     /**

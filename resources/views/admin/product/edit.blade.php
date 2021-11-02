@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <div class="card-title">Edit Product</div>
                             <hr />
-                            <form class="insert_form product_insert_form row" method="POST" action="{{route('product.update',$product->id)}}" enctype="multipart/form-data">
+                            <form class="update_form product_insert_form row" method="POST" action="{{route('product.update',$product->id)}}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="preloader"></div>
@@ -256,7 +256,7 @@
                                     @include('admin.product.components.input',[
                                         'name' => 'alert_quantity',
                                         'type' => 'number',
-                                        'value' => $product->alert_quantity,
+                                        'value' => $product->minimum_amount,
                                     ])
                                 </div>
 

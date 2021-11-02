@@ -103,12 +103,12 @@
                                 <tr>
                                     <td style="width: 40%">Description</td>
                                     <td>:</td>
-                                    <td>
+                                    <td style="padding-left: 190px">
                                         {!! $product->description !!}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td style="width: 40%">Features</td>
                                     <td>:</td>
                                     <td style="padding-left: 190px">
                                         {!! $product->features !!}
