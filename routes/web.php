@@ -38,6 +38,7 @@ Route::group([
     Route::get('/latest-products-json/{limit}', 'WebsiteController@latest_product_json')->name('product_latest_product_json');
     Route::get('/show-product-json/{product}', 'WebsiteController@show_product_json')->name('product_show_product_json');
     Route::get('/get-product-related-info-json/{product}', 'WebsiteController@get_product_related_info_json')->name('product_get_product_related_info_json');
+    Route::get('/search-product-json/{limit}/{key}', 'WebsiteController@search_product_json')->name('product_search_product_json');
 
 });
 

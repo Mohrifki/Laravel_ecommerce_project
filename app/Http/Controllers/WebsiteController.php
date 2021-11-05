@@ -64,6 +64,19 @@ class WebsiteController extends Controller
         return $collection;
     }
 
+    public function search_product_json(Request $request, $limit, $key)
+    {
+        $collection = Product::active()
+            ->where('name', $key)
+            ->orWhere('code', $key)
+            ->orWhere('price', $key)
+            ->orWhere('discount', $key)
+            ->orWhere('name','LIKE','%' . $key . '%')
+            ->with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
+            ->orderBy('id', 'DESC')->paginate($limit);
+        return $collection;
+    }
+
     public function show_product_json(Product $product)
     {
         $product['discount_price'] = HelperController::discount_price($product->price, $product->discount, $product->expiration_date);
