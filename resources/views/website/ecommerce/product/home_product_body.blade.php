@@ -1,4 +1,3 @@
-
 <div class="product-wrapper">
     <div class="product-img">
         <a href="#">

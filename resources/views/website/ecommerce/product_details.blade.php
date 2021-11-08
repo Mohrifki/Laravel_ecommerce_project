@@ -21,14 +21,11 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-9 col-md-12 col-12">
                     <div class="row">
-                        <div class="col-12" id="productList">
+                        <div class="col-12" id="productlist">
                             <div id="app_product_details">
                                 <product-details
-                                    sdjsdjsj>
-                                </product-details>
-                                {{-- <product-details
                                     :selected_product="{{$product}}">
-                                </product-details> --}}
+                                </product-details>
                             </div>
                         </div>
                     </div>
@@ -672,10 +669,10 @@
                             <h3>Recent Reviews</h3>
                         </div>
                         <div class="featured-wrapper p-20">
-                            {{-- @php
+                            @php
                                 $collection = App\Models\Product::active()->with(['category', 'sub_category', 'main_category', 'color', 'image', 'publication', 'size', 'unit', 'vendor', 'writer'])
                                                         ->orderBy('id','DESC')->limit(10)->get();
-                            @endphp --}}
+                            @endphp
                             {{-- @foreach ($collection as $item)
                                 <div @click.prevent="set_selected_product(JSON.stringify({{$item}}))" class="product-wrapper single-featured">
                                     <div class="product-content floatleft">

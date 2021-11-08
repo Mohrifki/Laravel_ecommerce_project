@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MainCategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,39 @@ class WebsiteController extends Controller
     {
         return view('website.ecommerce.products');
     }
-
-    public function details()
+    
+    public function get_min_max_price_json()
     {
-        return view('website.ecommerce.product_details');
+        $max_price = Product::orderBy('price', 'DESC')->first();
+        $min_price = Product::orderBy('price', 'ASC')->first();
+
+        return response()->json([
+            'max_price' => $max_price->price,
+            'min_price' => $min_price->price,
+        ]);
+    }
+
+    public function get_all_category_json()
+    {
+        $category = MainCategory::where('status', 1)->with('related_categories')->withCount('related_products')->get();
+        return $category;
+    }
+
+    public function details(Product $product)
+    {
+        $product['discount_price'] = HelperController::discount_price($product->price, $product->discount, $product->expiration_date);
+        $product['image'] = $product->image()->get();
+        $product['category'] = $product->category()->get();
+        $product['sub_category'] = $product->sub_category()->get();
+        $product['main_category'] = $product->main_category()->get();
+        $product['color'] = $product->color()->get();
+        $product['publication'] = $product->publication()->get();
+        $product['size'] = $product->size()->get();
+        $product['unit'] = $product->unit()->get();
+        $product['vendor'] = $product->vendor()->get();
+        $product['writer'] = $product->writer()->get();
+
+        return view('website.ecommerce.product_details', compact('product'));
     }
 
     public function cart()
@@ -47,7 +77,7 @@ class WebsiteController extends Controller
         return view('learn-vue');
     }
 
-    public function latest_product_json(Request $request, $limit)
+    public function latest_product_json(Request $request)
     {
         $collection = Product::active()
             ->with([
@@ -60,7 +90,7 @@ class WebsiteController extends Controller
                 'vendor',
                 'writer',
             ])
-            ->orderBy('id', 'DESC')->paginate($limit);
+            ->orderBy('id', 'DESC')->paginate(8);
         return $collection;
     }
 

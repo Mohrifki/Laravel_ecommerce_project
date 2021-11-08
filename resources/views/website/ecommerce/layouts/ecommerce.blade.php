@@ -61,7 +61,6 @@
 
         <!-- header start -->
         @include('include.flash')
-        <div id="app">
             <div class="main-wrapper box-shadow">
                 <header class="clearfix">
                     <div class="header-top-area bb hidden-xs">

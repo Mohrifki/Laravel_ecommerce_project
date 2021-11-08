@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-content">
-                                    <div style="padding: 0px 15px;">
+                                    <div id="productlist" style="padding: 0px 15px;">
                                         <product-single-body></product-single-body>
                                     </div>
                                 </div>

@@ -24,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', 'WebsiteController@index')->name('website_index');
 Route::get('/products', 'WebsiteController@products')->name('website_products');
-Route::get('/details', 'WebsiteController@details')->name('website_product_details');
+Route::get('/product-details/{product}', 'WebsiteController@details')->name('website_product_details');
 Route::get('/cart', 'WebsiteController@cart')->name('website_cart');
 Route::get('/checkout', 'WebsiteController@checkout')->name('website_checkout');
 Route::get('/wishlist', 'WebsiteController@wishlist')->name('website_wishlist');
@@ -35,10 +35,12 @@ Route::get('/learn-vue', 'WebsiteController@vue')->name('website_vue');
 Route::group([
     'prefix' => 'json',
 ], function () {
-    Route::get('/latest-products-json/{limit}', 'WebsiteController@latest_product_json')->name('product_latest_product_json');
+    Route::get('/get-min-max-price', 'WebsiteController@get_min_max_price_json')->name('product_get_min_max_price_json');
+    Route::get('/get-all-category', 'WebsiteController@get_all_category_json')->name('product_get_all_category_json');
+
+    Route::get('/latest-products-json', 'WebsiteController@latest_product_json')->name('product_latest_product_json');
     Route::get('/show-product-json/{product}', 'WebsiteController@show_product_json')->name('product_show_product_json');
     Route::get('/get-product-related-info-json/{product}', 'WebsiteController@get_product_related_info_json')->name('product_get_product_related_info_json');
-    Route::get('/search-product-json/{limit}/{key}', 'WebsiteController@search_product_json')->name('product_search_product_json');
 
 });
 
