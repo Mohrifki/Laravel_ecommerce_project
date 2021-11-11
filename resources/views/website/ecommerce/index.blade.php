@@ -4,7 +4,7 @@
             <!-- slider area start -->
             @include('website.ecommerce.home_include.slider')
 
-            <div class="all-product-area mtb-45" id="productList" >
+            <div class="all-product-area mtb-45" id="productlist" >
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-3 col-lg-3 col-md-12 col-12">
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-content">
-                                    <div id="productlist" style="padding: 0px 15px;">
+                                    <div style="padding: 0px 15px;">
                                         <product-single-body></product-single-body>
                                     </div>
                                 </div>

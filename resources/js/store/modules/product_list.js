@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const state = {
-  product_list: [
-    
-  ],
+  product_list: [],
   product_details: {
 
   },

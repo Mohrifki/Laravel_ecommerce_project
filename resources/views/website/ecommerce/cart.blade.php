@@ -105,15 +105,15 @@
                             <tbody>
                                 <tr>
                                     <td><strong>Subtotal</strong></td>
-                                    {{--
-                                    <td><b>$ @{{get_sub_total}}</b></td>
-                                    --}}
+                                    
+                                    <td><b>Rp. @{{get_sub_total}}</b></td>
+                                   
                                 </tr>
                                 <tr>
                                     <td><strong>Total</strong></td>
-                                    {{--
-                                    <td><b>$ @{{get_sub_total}}</b></td>
-                                    --}}
+                                    
+                                    <td><b>Rp. @{{get_sub_total}}</b></td>
+                                   
                                 </tr>
                             </tbody>
                         </table>

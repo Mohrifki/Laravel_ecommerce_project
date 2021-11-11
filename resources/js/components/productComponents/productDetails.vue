@@ -29,11 +29,10 @@
                     <a href="#">(3 customer reviews)</a><br />
                     <div class="d-flex justify-content-between" style="width:120px;">
                         <span v-if="product.discount_price > 0">
-                            <del>$ {{product.price}}</del>
+                            <del>Rp. {{product.price}}</del>
                         </span>
                         <span v-else>{{product.price}}</span>
-
-                        <span v-if="product.discount_price>0">$ {{product.discount_price}}</span>
+                        <span v-if="product.discount_price>0">Rp. {{product.discount_price}}</span>
                     </div>
                 </div>
                 <div>
@@ -117,7 +116,7 @@
 </template>
 
 <script>
-// import { mapGetters, mapActions, mapMutations } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 export default {
     props: ['selected_product'],
     created: function(){
@@ -126,68 +125,66 @@ export default {
             this.product_show_image = this.product.thumb_image;
         }else{
             this.product = this.selected_product;
-            // this.product_show_image = this.selected_product && this.product.thumb_image;
+            this.product_show_image = this.selected_product && this.product.thumb_image;
         }
-        // this.$watch('get_product_details',(newVal, oldVal)=>{
-        //     this.product = this.get_product_details;
-        //     this.product_show_image = this.product.thumb_image;
-        // })
+        this.$watch('get_product_details',(newVal, oldVal)=>{
+            this.product = this.get_product_details;
+            this.product_show_image = this.product.thumb_image;
+        })
 
     },
-    // methods: {
-    //     ...mapMutations([
-    //         'set_carts'
-    //     ]),
-    //     add_to_cart: function(product){
-    //         let cart = {
-    //             qty: this.qty,
-    //             color: this.color,
-    //             size: this.size,
-    //             product_price: this.get_product_price,
-    //             product: product,
-    //         }
-    //         this.set_carts(cart);
-
-    //         this.qty = 0;
-    //         this.color = '';
-    //         this.size = '';
-    //     }
-    // },
+    methods: {
+        ...mapMutations([
+            'set_carts'
+        ]),
+        add_to_cart: function(product){
+            let cart = {
+                qty: this.qty,
+                color: this.color,
+                size: this.size,
+                product_price: this.get_product_price,
+                product: product,
+            }
+            this.set_carts(cart);
+            
+            this.qty = 0;
+            this.color = '';
+            this.size = '';
+        }
+    },
     data: function(){
         return {
-            product_show_image: this.selected_product.thumb_image,
+            product_show_image: '',
             product: [],
-            // product_show_image: '',
-            // product: [],
-            // qty: 0,
-            // color: '',
-            // size: '',
-            // price: '',
+            qty: 0,
+            color: '',
+            size: '',
+            price: '',
         }
     },
-    // watch: {
-    //     get_selected_cart: {
-    //         handler(val){
-    //             this.qty = this.get_selected_cart.qty;
-    //             this.color = this.get_selected_cart.color;
-    //             this.size = this.get_selected_cart.size;
-    //         },
-    //         deep: true
-    //     }
-    // },
-    // computed: {
-    //     ...mapGetters([
-    //         'get_product_details',
-    //         'get_selected_cart',
-    //     ]),
-    //     get_product_price: function(){
-    //         if(this.product.discount_price > 0){
-    //             return this.product.discount_price;
-    //         }else{
-    //             return this.product.price;
-    //         }
-    //     }
-    // }
+    watch: {
+        get_selected_cart: {
+            handler(val){
+                this.qty = this.get_selected_cart.qty;
+                this.color = this.get_selected_cart.color;
+                this.size = this.get_selected_cart.size;
+            },
+            deep: true
+        }
+    },
+    computed: {
+        ...mapGetters([
+            'get_product_details',
+            'get_selected_cart',
+        ]),
+        get_product_price: function(){
+            if(this.product.discount_price > 0){
+                return this.product.discount_price;
+            }else{
+                return this.product.price;
+            }
+        }
+    }
 }
 </script>
 
