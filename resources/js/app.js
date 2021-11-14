@@ -17,6 +17,7 @@ Vue.component('productDetails', require('./components/productComponents/productD
 Vue.component('productHeaderCart', require('./components/productComponents/productHeaderCart.vue').default);
 Vue.component('cartDetails', require('./components/productComponents/cartDetails.vue').default);
 Vue.component('checkOut', require('./components/productComponents/checkOut.vue').default);
+Vue.component('invoice', require('./components/productComponents/invoice.vue').default);
 
 import { mapGetters, mapActions, mapMutations } from 'vuex';
  window.mapGetters = mapGetters;
@@ -60,3 +61,16 @@ if (document.getElementById('ceckOutBody')) {
         }
     });
 }
+
+if (document.getElementById('invoiceBody')) {
+    const app = new Vue({
+        el: "#invoiceBody",
+        store,
+        computed: {
+            ...mapGetters([
+                'get_sub_total'
+            ]),
+        }
+    });
+}
+

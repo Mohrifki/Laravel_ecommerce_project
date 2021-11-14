@@ -26,10 +26,17 @@ Route::get('/', 'WebsiteController@index')->name('website_index');
 Route::get('/products', 'WebsiteController@products')->name('website_products');
 Route::get('/product-details/{product}', 'WebsiteController@details')->name('website_product_details');
 Route::get('/cart', 'WebsiteController@cart')->name('website_cart');
+
 Route::get('/checkout', 'WebsiteController@checkout')->name('website_checkout')->middleware('auth');
+Route::post('/checkout-confirm','WebsiteController@checkout_confirm')->name('check_out_confirm')->middleware('auth');
+Route::get('/checkout_success','WebsiteController@checkout_success')->name('checkout_success')->middleware('auth');
+Route::post('/save_checkout_information','CheckOutController@save_checkout_information')->name('save_checkout_information')->middleware('auth');
+Route::get('/get_latest_checkout_information','CheckOutController@get_latest_checkout_information')->name('get_latest_checkout_information')->middleware('auth');
+
 Route::get('/wishlist', 'WebsiteController@wishlist')->name('website_wishlist');
 Route::get('/contact', 'WebsiteController@contact')->name('website_contact');
 Route::get('/learn-vue', 'WebsiteController@vue')->name('website_vue');
+
 
 
 Route::group([

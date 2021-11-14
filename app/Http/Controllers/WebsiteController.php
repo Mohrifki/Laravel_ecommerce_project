@@ -62,6 +62,36 @@ class WebsiteController extends Controller
         return view('website.ecommerce.checkout');
     }
 
+    public function checkout_confirm()
+    {
+        \Stripe\Stripe::setApiKey('sk_test_51JvMGoEyvFXnIxg11aplVBstJMT41ZTE0al1fyFsYnynU8O5apmG7eqyMf7qsb6nzBihDYfDPtiej5XKnc28lqeZ00tQXBqk74');
+        header('Content-Type: application/json');
+        $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+        $checkout_session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'usd',
+                    'unit_amount' => 2000,
+                    'product_data' => [
+                        'name' => 'Stubborn Attachments',
+                        'images' => ["https://i.imgur.com/EHyR2nP.png"]
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => $YOUR_DOMAIN . '/checkout_success',
+            'cancel_url' => $YOUR_DOMAIN . '/checkout',
+        ]);
+        echo json_encode(['id' => $checkout_session->id]);
+    }
+
+    public function checkout_success()
+    {
+        return view('website.ecommerce.invoice');
+    }
+
     public function wishlist()
     {
         return view('website.ecommerce.wishlist');

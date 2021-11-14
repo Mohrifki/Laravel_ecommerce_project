@@ -155,32 +155,32 @@ export default {
         ...mapMutations([
             'set_billing_address',
         ]),
-        // checout_confirm: function(){
-        //     this.set_billing_address(this.billing_address);
+        checout_confirm: function(){
+            this.set_billing_address(this.billing_address);
 
-        //     var stripe = Stripe("pk_test_51ImMYLL8CFL5l5NjFUVCtEZrritkVCduYkv3iXK0RnfxjpSHmo6pu9wMdA7CgBLsy2FEndolqr6n0iCUx6Cy1smn000d51tPbc");
+            var stripe = Stripe("pk_test_51JvMGoEyvFXnIxg1TFcJRQeAMV2j8yLOqHa0Qz898hb75wH9EIpUzeWZQscnVWFCpB3JCJ5iZtOAUMVGbqgCXjmJ00OZT7GeQ0");
 
-        //     axios.post("/checkout-confirm")
-        //     .then(function (response) {
-        //         return response.data;
-        //     })
-        //     .then(function (session) {
-        //         // console.log('hi');
-        //         return stripe.redirectToCheckout({ sessionId: session.id });
-        //     })
-        //     .then(function (result) {
-        //         // If redirectToCheckout fails due to a browser or network
-        //         // error, you should display the localized error message to your
-        //         // customer using error.message.
+            axios.post("/checkout-confirm")
+            .then(function (response) {
+                return response.data;
+            })
+            .then(function (session) {
+                // console.log('hi');
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function (result) {
+                // If redirectToCheckout fails due to a browser or network
+                // error, you should display the localized error message to your
+                // customer using error.message.
 
-        //         if (result.error) {
-        //             alert(result.error.message);
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         console.error("Error:", error);
-        //     });
-        // }
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error("Error:", error);
+            });
+        }
     },
     computed: {
         ...mapGetters([

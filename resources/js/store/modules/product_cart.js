@@ -3,6 +3,7 @@ import axios from "axios";
 const state = {
   sub_total:0,
   carts:[],
+  latest_saved_cart: {},
   selected_cart: {},
   
 }
@@ -11,9 +12,17 @@ const getters = {
   get_carts: state => state.carts,
   get_sub_total: state => state.sub_total,
   get_selected_cart: state => state.selected_cart,
+  get_latest_saved_cart: state => state.latest_saved_cart,
 }
 
 const actions = {
+  fetch_latest_saved_cart: function(state){
+    axios.get('/get_latest_checkout_information')
+        .then((res)=>{
+            this.commit('save_latest_saved_cart',res.data);
+        })
+    
+},
 }
 
 const mutations = {
@@ -40,6 +49,14 @@ const mutations = {
   },
   calculate_cart_total: function(state, cart){
     state.sub_total = state.carts.reduce((total,item)=>total += (item.product_price * item.qty),0);
+  },
+  reset_cart: function(state){
+    state.sub_total= 0;
+    state.carts= [];
+    state.selected_cart= {};
+  },
+  save_latest_saved_cart: function(state,info){
+    state.latest_saved_cart = info;
   }
 }
 
