@@ -23,7 +23,19 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', 'WebsiteController@index')->name('website_index');
+
 Route::get('/products', 'WebsiteController@products')->name('website_products');
+
+Route::get('/products/category/{main_category}', 'WebsiteController@main_category_products')->name('website_main_category_products');
+Route::get('/products/category/{main_category}/all-product-json', 'WebsiteController@main_category_products_json')->name('website_main_category_products_json');
+
+Route::get('/products/category/{main_category}/{category}', 'WebsiteController@category_products')->name('website_category_products');
+Route::get('/products/category/{main_category}/{category}/all-product-json', 'WebsiteController@category_products_json')->name('website_category_products_json');
+
+Route::get('/products/category/{main_category}/{category}/{sub_category}', 'WebsiteController@sub_category_products')->name('website_sub_category_products');
+Route::get('/products/category/{main_category}/{category}/{sub_category}/all-product-json', 'WebsiteController@sub_category_products_json')->name('website_sub_category_products_json');
+
+
 Route::get('/product-details/{product}', 'WebsiteController@details')->name('website_product_details');
 Route::get('/cart', 'WebsiteController@cart')->name('website_cart');
 

@@ -2886,6 +2886,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 var _require = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js"),
     store = _require["default"];
 
+window.vue_store = store;
 Vue.component('productSingleBody', __webpack_require__(/*! ./components/productComponents/productSingleBody.vue */ "./resources/js/components/productComponents/productSingleBody.vue")["default"]);
 Vue.component('productDetails', __webpack_require__(/*! ./components/productComponents/productDetails.vue */ "./resources/js/components/productComponents/productDetails.vue")["default"]);
 Vue.component('productHeaderCart', __webpack_require__(/*! ./components/productComponents/productHeaderCart.vue */ "./resources/js/components/productComponents/productHeaderCart.vue")["default"]);
@@ -2902,7 +2903,13 @@ if (document.getElementById('productlist')) {
     el: "#productlist",
     store: store
   });
-}
+} // if (document.getElementById('category_product')) {
+//     const app = new Vue({
+//         el: "#category_product",
+//         store,
+//     });
+// }
+
 
 if (document.getElementById('productCart')) {
   var _app = new Vue({

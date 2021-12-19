@@ -1,7 +1,7 @@
 @extends('website.ecommerce.layouts.ecommerce')
 @section('content')
 
-<section class="py-5">
+<section class="py-12">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -36,6 +36,7 @@
                         <div class="login-button">
                             <button type="submit">Login</button>
                         </div>
+                        <a href="/register">Register</a>
 
                         {{-- <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
@@ -50,22 +51,6 @@
                         </div> --}}
                     </form>
 
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="account-heading mb-25">
-                    <h2>Register</h2>
-                </div>
-                <div class="account-form form-style p-20 mb-30 bg-fff box-shadow">
-                    <form action="#">
-                        <b>Email address <span>*</span></b>
-                        <input type="text" />
-                        <b>Password <span>*</span></b>
-                        <input type="password" />
-                    </form>
-                    <div class="login-button">
-                        <button>register</button>
-                    </div>
                 </div>
             </div>
         </div>

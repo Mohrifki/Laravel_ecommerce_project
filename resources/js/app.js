@@ -11,6 +11,7 @@ window.Vue = require('vue').default;
 
 // import vuex
 const { default: store } = require('./store/index');
+window.vue_store = store;
 
 Vue.component('productSingleBody', require('./components/productComponents/productSingleBody.vue').default);
 Vue.component('productDetails', require('./components/productComponents/productDetails.vue').default);
@@ -20,18 +21,25 @@ Vue.component('checkOut', require('./components/productComponents/checkOut.vue')
 Vue.component('invoice', require('./components/productComponents/invoice.vue').default);
 
 import { mapGetters, mapActions, mapMutations } from 'vuex';
- window.mapGetters = mapGetters;
- window.mapActions = mapActions;
- window.mapMutations = mapMutations;
+window.mapGetters = mapGetters;
+window.mapActions = mapActions;
+window.mapMutations = mapMutations;
 
-if(document.getElementById('productlist')){
+if (document.getElementById('productlist')) {
     const app = new Vue({
         el: "#productlist",
         store,
     });
 }
 
-if(document.getElementById('productCart')){
+// if (document.getElementById('category_product')) {
+//     const app = new Vue({
+//         el: "#category_product",
+//         store,
+//     });
+// }
+
+if (document.getElementById('productCart')) {
     const app = new Vue({
         el: "#productCart",
         store,
