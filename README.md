@@ -68,14 +68,3 @@ Generating a New Application Key
 php artisan key:generate
 ```
 
-
-## License
-
-> Copyright (C) 2021 HungryCoders.  
-**[⬆ back to top](#laravel-ecommerce-platform)**
-
-[Features]:#features
-[Requirements]:#requirements
-[Install]:#install
-[How to setting]:#how-to-setting
-[License]:#license
