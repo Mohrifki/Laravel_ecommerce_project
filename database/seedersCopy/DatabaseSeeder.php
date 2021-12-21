@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
                     ],
                     "Clothing" => [
                         "t-shirt",
-                        "shirt"
+                        "Panjabi"
                     ],
                     "Grooming & Wellness" => [
                         'body spray',
@@ -64,16 +64,19 @@ class DatabaseSeeder extends Seeder
                     ],
                 ],
                 "Women's" => [
-                    "tas" => [
-                        'gucci',
-                        'hermes'
+                    "Saree" => [
+                        'jamdani',
+                        'silk'
                     ],
-                    "parfume" => [
-                        "evaangline",
-                        "morris",
+                    "Kurti" => [
+                        "boil",
+                        "jamidari",
+                        "katan"
                     ],
                     "Jewelry" => [
                         'nekless',
+                        "breslate",
+                        "nupur"
                     ],
                 ],
                 "Baby & Kids" => [
@@ -83,20 +86,29 @@ class DatabaseSeeder extends Seeder
                         "Cricket"
                     ],
                     "Kids Footwer" => [
-                        "shoe"
+                        "shoe",
+                        "moja"
                     ],
                     "Baby Food" => [
                         "milk",
+                        "Dano",
+                        "nido",
+                        "oats"
                     ]
                 ],
                 "Food & Grocery" => [
                     "Rice" => [
-                        'nasi goreng',
-                        "nasi padang",
+                        'Ataf',
+                        "chini gura",
+                    ],
+                    "Dal" => [
+                        "mosur",
+                        "mas kolai",
+                        "mug"
                     ],
                     "Oil" => [
-                        'bimoli',
-                        'sunco'
+                        'soyabin',
+                        'Sorisa'
                     ]
                 ],
                 "Medicine" => [
@@ -116,11 +128,11 @@ class DatabaseSeeder extends Seeder
                         "mobile",
                         "ear-phone"
                     ],
-                    "Huwawei" => [
+                    "Huwaui" => [
                         "mobile",
                         "ear-phone"
                     ],
-                    "Iphone" => [
+                    "Remax" => [
                         "mobile",
                         "ear-phone"
                     ]
@@ -271,43 +283,43 @@ class DatabaseSeeder extends Seeder
         // writer
         $data = [
             [
-                'name' => strtolower('ANDI'),
+                'name' => strtolower('ABDUL WAHEED KHAN'),
                 'image' => 'http://lorempixel.com/200/200/people/1/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('ANDI')),
+                'slug' => str::slug(strtolower('ABDUL WAHEED KHAN')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('SULAIMAN'),
+                'name' => strtolower('ABDULLA YUSUF ALI'),
                 'image' => 'http://lorempixel.com/200/200/people/2/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('SULAIMAN')),
+                'slug' => str::slug(strtolower('ABDULLA YUSUF ALI')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('DHIMAS'),
+                'name' => strtolower('AKM SHAFI'),
                 'image' => 'http://lorempixel.com/200/200/people/3/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('DHIMAS')),
+                'slug' => str::slug(strtolower('AKM SHAFI')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('ABDUL'),
+                'name' => strtolower('ABDUL-MUNIM AL-HASHIMI'),
                 'image' => 'http://lorempixel.com/200/200/people/4/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('ABDUL')),
+                'slug' => str::slug(strtolower('ABDUL-MUNIM AL-HASHIMI')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('ABDUL MALIK'),
+                'name' => strtolower('ABDUL MALIK MUJAHID'),
                 'image' => 'http://lorempixel.com/200/200/people/5/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('ABDUL MALIK')),
+                'slug' => str::slug(strtolower('ABDUL MALIK MUJAHID')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];
@@ -324,27 +336,27 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('Pramodya'),
+                'name' => strtolower('Onnesha Prokashon'),
                 'image' => 'http://lorempixel.com/200/200/business/2/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('Pramodya')),
+                'slug' => str::slug(strtolower('Onnesha Prokashon')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('Hidayat'),
+                'name' => strtolower('Adiyat Prokashoni'),
                 'image' => 'http://lorempixel.com/200/200/business/3/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('Hidayat')),
+                'slug' => str::slug(strtolower('Adiyat Prokashoni')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('Library'),
+                'name' => strtolower('Anowar Library'),
                 'image' => 'http://lorempixel.com/200/200/business/4/',
                 'description' => str_shuffle("Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, numquam?"),
                 'creator' => 1,
-                'slug' => str::slug(strtolower('Library')),
+                'slug' => str::slug(strtolower('Anowar Library')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
@@ -570,27 +582,27 @@ class DatabaseSeeder extends Seeder
         // Vendor
         $data = [
             [
-                'name' => strtolower('Mr.Sulaiman'),
-                'email' => 'sulaiman@gmail.com',
-                'address' => 'jlau',
+                'name' => strtolower('Mr.Tutul'),
+                'email' => 'tutul@gmail.com',
+                'address' => 'jatrabari',
                 'creator' => 1,
-                'slug' => str::slug(strtolower('Sulaiman')),
+                'slug' => str::slug(strtolower('tutul')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('Mr.Dhimas'),
-                'email' => 'Dhimas@gmail.com',
-                'address' => 'jlau',
+                'name' => strtolower('Mr.yousuf'),
+                'email' => 'yousuf@gmail.com',
+                'address' => 'danmondi',
                 'creator' => 1,
-                'slug' => str::slug(strtolower('Dhimas')),
+                'slug' => str::slug(strtolower('yousuf')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
-                'name' => strtolower('Mr.andi'),
-                'email' => 'andi@gmail.com',
-                'address' => 'prancak',
+                'name' => strtolower('Mr.sajid'),
+                'email' => 'sajid@gmail.com',
+                'address' => 'cittagon',
                 'creator' => 1,
-                'slug' => str::slug(strtolower('andi')),
+                'slug' => str::slug(strtolower('sajid')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];

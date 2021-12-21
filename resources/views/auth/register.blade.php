@@ -112,7 +112,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="account-title mb-20 text-center">
-                    <h1>My Account</h1>
+                    <h1>Create Account</h1>
                 </div>
             </div>
             <div class="col-lg-6">

@@ -420,7 +420,7 @@ class WebsiteController extends Controller
 
     public function checkout_confirm()
     {
-        \Stripe\Stripe::setApiKey('sk_test_51ImMYLL8CFL5l5Nj8ABACoXjon8HlNVSWRL2LiTNSCw2QBQeDusGYoskA0895tgPd8zVPwg2Y0jFxsZkYSjqCivj003dUkfPMc');
+        \Stripe\Stripe::setApiKey('sk_test_51JvMGoEyvFXnIxg11aplVBstJMT41ZTE0al1fyFsYnynU8O5apmG7eqyMf7qsb6nzBihDYfDPtiej5XKnc28lqeZ00tQXBqk74');
         header('Content-Type: application/json');
         $YOUR_DOMAIN = 'http://127.0.0.1:8000';
         $checkout_session = \Stripe\Checkout\Session::create([

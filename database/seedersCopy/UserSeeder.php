@@ -22,11 +22,11 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->role_id = 1;
-        $user->first_name = 'Mr.Super';
+        $user->first_name = 'Mr. Super';
         $user->last_name = 'Admin';
         $user->username = 'super_admin';
         $user->photo = 'avatar.png';
-        $user->phone = '0824326467434';
+        $user->phone = '082333324521';
         $user->email = 'superadmin@gmail.com';
         $user->password = Hash::make('12345678');
         $user->slug = 'super_admin';
@@ -35,24 +35,24 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->role_id = 2;
-        $user->first_name = 'Mr. vua';
+        $user->first_name = 'Mr. repus';
         $user->last_name = 'Admin';
         $user->username = 'admin';
         $user->photo = 'avatar.png';
-        $user->phone = '0824326467434';
+        $user->phone = '082333324521';
         $user->email = 'admin@gmail.com';
         $user->password = Hash::make('12345678');
         $user->slug = 'admin';
         $user->created_at = Carbon::now()->toDateTimeString();
         $user->save();
-
+        
         $user = new User();
         $user->role_id = 3;
-        $user->first_name = 'Mr. vua';
+        $user->first_name = 'Mr. repus';
         $user->last_name = 'modarator';
         $user->username = 'modarator';
         $user->photo = 'avatar.png';
-        $user->phone = '0824326467434';
+        $user->phone = '082333324521';
         $user->email = 'modarator@gmail.com';
         $user->password = Hash::make('12345678');
         $user->slug = 'modarator';
@@ -61,11 +61,11 @@ class UserSeeder extends Seeder
 
         $user = new User();
         $user->role_id = 4;
-        $user->first_name = 'Mr. vua';
+        $user->first_name = 'Mr. repus';
         $user->last_name = 'user';
         $user->username = 'user';
         $user->photo = 'avatar.png';
-        $user->phone = '0824326467434';
+        $user->phone = '082333324521';
         $user->email = 'user@gmail.com';
         $user->password = Hash::make('12345678');
         $user->slug = 'user';
@@ -73,12 +73,12 @@ class UserSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->role_id = 5;
-        $user->first_name = 'Mr. vua';
+        $user->role_id = 4;
+        $user->first_name = 'Mr. repus';
         $user->last_name = 'subscriber';
         $user->username = 'subscriber';
         $user->photo = 'avatar.png';
-        $user->phone = '0824326467434';
+        $user->phone = '082333324521';
         $user->email = 'subscriber@gmail.com';
         $user->password = Hash::make('12345678');
         $user->slug = 'subscriber';
